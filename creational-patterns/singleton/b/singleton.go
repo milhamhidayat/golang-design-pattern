@@ -10,7 +10,7 @@ type singleton struct {
 
 var instance *singleton
 
-func GetInstance() *Singleton {
+func GetInstance() Singleton {
 	return nil
 }
 
