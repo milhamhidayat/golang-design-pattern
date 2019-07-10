@@ -20,3 +20,10 @@ func TestGetInstance_MultipleCallsToGetInstance_ReturnsSingleton(t *testing.T) {
 	newSingleton := GetInstance()
 	assert.Equal(t, singleton, newSingleton)
 }
+
+func TestGetInstance(t *testing.T) {
+	instance1 := GetInstance()
+	instance2 := GetInstance()
+
+	assert.Equal(t, instance1, instance2)
+}
