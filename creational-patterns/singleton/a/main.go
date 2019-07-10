@@ -36,5 +36,5 @@ func main() {
 	fmt.Println(a.GetAttrib()) // akan cetak "second"
 
 	b := GetMyClass()
-	fmt.Println(b.GetAttrib()) // akan cetak "second", karena kita membatasi pembuatan class "MyClass" lebih dari sekali
+	fmt.Println(b.GetAttrib()) // akan cetak "second", karena kita membatasi pembuatan class "MyClass" tidak boleh lebih dari sekali
 }

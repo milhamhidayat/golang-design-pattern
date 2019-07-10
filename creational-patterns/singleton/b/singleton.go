@@ -11,9 +11,13 @@ type singleton struct {
 var instance *singleton
 
 func GetInstance() Singleton {
-	return nil
+	if instance == nil {
+		instance = new(singleton)
+	}
+	return instance
 }
 
 func (s *singleton) AddOne() int {
-	return 0
+	s.count++
+	return s.count
 }

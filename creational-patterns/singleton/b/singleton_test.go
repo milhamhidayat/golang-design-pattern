@@ -14,13 +14,14 @@ func TestGetInstance(t *testing.T) {
 
 	currentCount := counter1.AddOne()
 	if currentCount != 1 {
+		// Test 2, after add one, count must be 1
 		t.Errorf("After calling for the first time to count, the count must be 1 but it is %d\n", currentCount)
 	}
 
 	counter2 := GetInstance()
 	if counter2 != expectedCounter {
 		//Test 2 failed
-		t.Error("Singleton instances must be different")
+		t.Error("expected same instance in counter2 but it got different instance")
 	}
 
 	currentCount = counter2.AddOne()
