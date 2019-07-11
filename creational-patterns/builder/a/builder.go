@@ -35,7 +35,7 @@ func (ub *UserBuilder) Role(role string) *UserBuilder {
 
 func main() {
 	ub := &UserBuilder{}
-	user := ub.Name("Michael").Role("Staff").Build()
+	user := ub.Name("Michael").Role("manager").Build()
 	fmt.Println("++++++++++++++")
 	fmt.Printf("%+v\n", user)
 	fmt.Println("++++++++++++++")
