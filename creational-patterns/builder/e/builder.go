@@ -39,6 +39,10 @@ func (m *MealDirector) Construct(b MealBuilder) {
 	b.SetDrink()
 	b.SetFood()
 	m.builder = b
+
+	// m.builder = b
+	// m.builder.SetDrink()
+	// m.builder.SetFood()
 }
 
 func main() {
