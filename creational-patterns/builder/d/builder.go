@@ -17,7 +17,7 @@ type PizzaBuilder interface {
 	SetDough() PizzaBuilder
 	SetSauce() PizzaBuilder
 	SetTopping() PizzaBuilder
-	GetPizza()
+	GetPizza() PizzaProduct
 }
 
 // concrete builder
@@ -41,10 +41,8 @@ func (m *MeatPizza) SetTopping() PizzaBuilder {
 	return m
 }
 
-func (m *MeatPizza) GetPizza() {
-	fmt.Println("++++++++++++++")
-	fmt.Printf("%+v\n", m.ingredients)
-	fmt.Println("++++++++++++++")
+func (m *MeatPizza) GetPizza() PizzaProduct {
+	return m.ingredients
 }
 
 // director
@@ -70,5 +68,5 @@ func main() {
 	build.SetPizza(pizza1)
 
 	build.Construct()
-	build.builder.GetPizza()
+	fmt.Println(build.builder.GetPizza())
 }
