@@ -3,13 +3,12 @@ Singleton
 Singleton merupakan pattern dimana sebuah kelas hanya memiliki sebuah instance, 
 dan menyediakan akses global untuk instance tersebut
 
-Inline-style: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://refactoring.guru/images/patterns/content/singleton/singleton.png)
 
-Reference-style: 
-![alt text][logo]
+![alt text](https://refactoring.guru/images/patterns/content/singleton/singleton-comic-1-en.png)
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+
+
 
 Contoh situasi menggunakan Singleton Pattern :
 - Ketika ingin menggunakan koneksi yang sama ke database untuk membuat query
