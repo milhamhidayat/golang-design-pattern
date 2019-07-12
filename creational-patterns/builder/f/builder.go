@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // product
 type VehicleProduct struct {
 	Wheels    int
@@ -37,7 +39,11 @@ func (c *CarBuilder) SetSeats() BuildProcess {
 	return nil
 }
 
-func (c *CarBuilder) Build() VehicleProduct {
+func (c *CarBuilder) SetStructure() BuildProcess {
+	return nil
+}
+
+func (c *CarBuilder) GetVehicle() VehicleProduct {
 	return VehicleProduct{}
 }
 
@@ -56,6 +62,10 @@ func (b *BikeBuilder) SetStructure() BuildProcess {
 	return nil
 }
 
-func (b *BikeBuilder) Build() VehicleProduct {
+func (b *BikeBuilder) GetVehicle() VehicleProduct {
 	return VehicleProduct{}
+}
+
+func main() {
+	fmt.Println("this is dummy driver")
 }
