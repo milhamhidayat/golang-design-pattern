@@ -1,11 +1,15 @@
 Builder
 
-Builder pattern merupakan pattern dimana membuat objek secara bertahap, selangkah demi selangkah.
+Builder pattern merupakan pattern dimana 
+- memisahkan kode untuk membuat object ke _builders_ sehingga terpisah dari object tersebut. Akan membuat kode untuk membuat product dapat memiliki implementasi yang berbeda. 
+- membuat objek secara bertahap, selangkah demi selangkah.
 
 ![alt text](https://refactoring.guru/images/patterns/content/builder/builder.png)
 
 
 **Masalah:**
+
+- Ketika
 
 - Parameter terlalu banyak 
 
@@ -53,7 +57,7 @@ Namun akan mengakibatkan jumlah constructor yang banyak karena bergantung pada p
 
 
 - Pembuatan object dilakukan dengan beberapa tahapan (buildWalls, buildDoor)
-- Beberapa tahapan pembangunan object memiliki implementasi yang berbeda tergantung pada produk yang akan dibuat.
+- Beberapa tahapan pembangunan object memiliki implementasi yang berbeda tergantung pada object product yang akan dibuat.
 
     Contoh:
 
@@ -62,12 +66,20 @@ Namun akan mengakibatkan jumlah constructor yang banyak karena bergantung pada p
 
 **Elemen penyusun builder pattern
 
-- Product : jenis produk yang akan dibuat oleh builder. Menentukan elemen penyusunnya (blueprint)
+- Product : jenis product  yang akan dibuat oleh builder. Menentukan elemen penyusunnya (blueprint)
 - Builder : builder interface menentukan langkah / tahapan yang dilakukan untuk membuat sebuah product
-- Concrete builder : menyediakan implementasi langkah / tahapan yang dilakukan untuk membuat sebuah product. Implementasi dari builder interface
-- Director : menentukan urutan tahapan / langkah dalam membuat product. Sehingga dapat dipanggil kembali jika ingin membuat sebuah product
+- Concrete builder : object product menyediakan implementasi langkah / tahapan yang dilakukan untuk membuat sebuah product. Implementasi dari builder interface
+- Director : menentukan urutan tahapan / langkah dalam membuat object product. Sehingga dapat dipanggil kembali jika ingin membuat sebuah object product
+
+Note : director dipakai ketika urutan tahapan / langkah sudah fix dan dapat diimplementasikan di setiap pembuatan object product. Sehingga 2 object product dapat memiliki nilai atribut yang sama. Tidak bisa memberikan nilai input saat ada di client code.
 
 ![alt text](https://refactoring.guru/images/patterns/diagrams/builder/structure.png)
+
+**Implementasi Builder Pattern**
+- Buat _product_ (cetak biru) yang akan dibuat
+- Buat _interface builder_, digunakan untuk menentukan tahapan dalam membuat product
+- Buat _director_, untuk menentukan urutan. _director_ akan memanggil implementasi _interface builder_
+- Buat _concrete builder_, implementasi dari _interface builder_. Kode implementasi untuk membuat product
 
 **Penggunaan Builder Pattern**
 
@@ -83,7 +95,7 @@ Namun akan mengakibatkan jumlah constructor yang banyak karena bergantung pada p
 - _Code Complexity_ akan meningkat karena harus membuat class baru setiap kali ingin membuat concrete builder baru.
 
 **NOTE**
-- Kita bisa membuat builder pattern tanpa menggunakan director
+- kita bisa membuat builder pattern tanpa menggunakan director
 - kita bisa membuat builder pattern dengan menggunakan functional options
 - Kita bisa menggunakan struct sebagai builder pattern, karena kita bisa langsung memberikan value pada attribut. Sehingga kita tidak perlu menggunkan nilai null jika kita tidak ingin memberikan nilai pada sebuah atribut, karena sudah dihandle golang secara otomatis.
 
