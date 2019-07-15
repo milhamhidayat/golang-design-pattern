@@ -68,3 +68,40 @@ Namun akan mengakibatkan jumlah constructor yang banyak karena bergantung pada p
 - Director : menentukan urutan tahapan / langkah dalam membuat product. Sehingga dapat dipanggil kembali jika ingin membuat sebuah product
 
 ![alt text](https://refactoring.guru/images/patterns/diagrams/builder/structure.png)
+
+**Penggunaan Builder Pattern**
+
+- Gunakan builder pattern untuk menghapus override constructor yang memiliki jumlah parameter berbeda-beda untuk membuat sebuah object
+- Gunakan builder pattern ketika tahapan membuat product sama, namun berbeda di implementasinya 
+
+**Keuntungan**
+- Dapat membuat object secara bertahap
+- Dapat menggunakan kembali code untuk membuat tahapan dalam membuat product (product, builder, director)
+- Menggunakan konsep _Single Responsiblity Principle_. Dimana bagian untuk membuat product dipisahkan dari business logic product.
+
+**Kekurangan**
+- _Code Complexity_ akan meningkat karena harus membuat class baru setiap kali ingin membuat concrete builder baru.
+
+**NOTE**
+- Kita bisa membuat builder pattern tanpa menggunakan director
+- kita bisa membuat builder pattern dengan menggunakan functional options
+- Kita bisa menggunakan struct sebagai builder pattern, karena kita bisa langsung memberikan value pada attribut. Sehingga kita tidak perlu menggunkan nilai null jika kita tidak ingin memberikan nilai pada sebuah atribut, karena sudah dihandle golang secara otomatis.
+
+```go
+type User struct {
+    name string
+    phone int
+    address string
+}
+
+func main(){
+    user := User{
+        name: "sadf",
+        phone: 3425809,
+    },
+}
+```
+
+Reference :
+- Refactoring guru - Builder pattern : https://refactoring.guru/design-patterns/builder
+- Jon Callhoun - Using functional options instead of method chaining in Go :  https://www.calhoun.io/using-functional-options-instead-of-method-chaining-in-go/
