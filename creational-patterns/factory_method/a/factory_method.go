@@ -2,30 +2,49 @@ package main
 
 import "fmt"
 
+const (
+	Circle = 1
+	Square = 2
+)
+
 // Product
 type ShapeProduct interface {
-	Area() float64
+	Area() int // factory method
 }
 
 // Concrete Product
-type Circle struct {
-	Radius float64
+type CircleConcreteBuilder struct {
+	Radius int
 }
 
-func (c *Circle) Area() float64 {
+func (c *CircleConcreteBuilder) Area() int {
 	return 22 / 7 * c.Radius * c.Radius
 }
 
-type Square struct {
-	Size float64
+type SquareConcreteBuilder struct {
+	Size int
 }
 
-func (s *Square) Area() float64 {
+func (s *SquareConcreteBuilder) Area() int {
 	return s.Size * s.Size
 }
 
-// creator
+// factory
+func ShapeFactory(m, num int) ShapeProduct {
+	switch m {
+	case Circle:
+		return &CircleConcreteBuilder{num}
+	case Square:
+		return &SquareConcreteBuilder{Size: num}
+	default:
+		return nil
+	}
+}
 
 func main() {
-	fmt.Println("this is factory method")
+	circle := ShapeFactory(1, 5)
+	fmt.Println(circle.Area())
+
+	square := ShapeFactory(2, 5)
+	fmt.Println(square.Area())
 }
