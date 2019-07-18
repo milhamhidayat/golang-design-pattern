@@ -17,9 +17,9 @@ type RestaurantFood struct{}
 
 func (r *RestaurantFood) GetBurger(num int) (b.BurgerProduct, error) {
 	if num == 1 {
-		return new(kfc.KFCKitchen).CreateBurger(), nil
+		return new(kfc.Kitchen).CreateBurger(), nil
 	} else if num == 2 {
-		return new(mcd.McDKitchen).CreateBurger(), nil
+		return new(mcd.Kitchen).CreateBurger(), nil
 	} else {
 		return nil, errors.New("option is not valid")
 	}
@@ -27,9 +27,9 @@ func (r *RestaurantFood) GetBurger(num int) (b.BurgerProduct, error) {
 
 func (r *RestaurantFood) GetMeal(num int) (m.MealProduct, error) {
 	if num == 1 {
-		return new(kfc.KFCKitchen).CreateMeal(), nil
+		return new(kfc.Kitchen).CreateMeal(), nil
 	} else if num == 2 {
-		return new(mcd.McDKitchen).CreateMeal(), nil
+		return new(mcd.Kitchen).CreateMeal(), nil
 	} else {
 		return nil, errors.New("option is not valid")
 	}

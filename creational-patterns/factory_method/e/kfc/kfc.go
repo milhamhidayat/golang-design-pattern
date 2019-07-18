@@ -12,7 +12,7 @@ type SuperBesar struct {
 	m.Meal
 }
 
-type KFCKitchen struct{}
+type Kitchen struct{}
 
 func (z *ZuperKrunch) MakeBurger() b.BurgerProduct {
 	burger := &ZuperKrunch{
@@ -39,10 +39,10 @@ func (s *SuperBesar) MakeMeal() m.MealProduct {
 	return meal
 }
 
-func (k *KFCKitchen) CreateBurger() b.BurgerProduct {
+func (k *Kitchen) CreateBurger() b.BurgerProduct {
 	return new(ZuperKrunch).MakeBurger()
 }
 
-func (k *KFCKitchen) CreateMeal() m.MealProduct {
+func (k *Kitchen) CreateMeal() m.MealProduct {
 	return new(SuperBesar).MakeMeal()
 }

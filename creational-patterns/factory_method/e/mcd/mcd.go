@@ -13,7 +13,7 @@ type AyamPanas struct {
 	m.Meal
 }
 
-type McDKitchen struct{}
+type Kitchen struct{}
 
 func (m *McSpicy) MakeBurger() b.BurgerProduct {
 	burger := &McSpicy{
@@ -39,10 +39,10 @@ func (a *AyamPanas) MakeMeal() m.MealProduct {
 	return meal
 }
 
-func (m *McDKitchen) CreateBurger() b.BurgerProduct {
+func (k *Kitchen) CreateBurger() b.BurgerProduct {
 	return new(McSpicy).MakeBurger()
 }
 
-func (m *McDKitchen) CreateMeal() m.MealProduct {
+func (k *Kitchen) CreateMeal() m.MealProduct {
 	return new(AyamPanas).MakeMeal()
 }
