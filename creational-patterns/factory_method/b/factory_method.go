@@ -2,42 +2,69 @@ package main
 
 import "fmt"
 
-type Shape interface {
-	Area() int
+// 'product' interface
+type IFactory interface {
+	Drive(miles int)
 }
 
-type Circle struct {
-	radius int
+// 'concrete product'
+type Scooter struct{}
+
+func (s *Scooter) Drive(miles int) {
+	fmt.Printf("drive the scooter : %d km \n", miles)
 }
 
-type Square struct {
-	side int
+type Bike struct{}
+
+func (b *Bike) Drive(miles int) {
+	fmt.Printf("drive the bike : %d km \n", miles)
 }
 
-type Rectangle struct {
-	side int
+type BMW struct{}
+
+func (b *BMW) Drive(miles int) {
+	fmt.Printf("drive the bmw : %d km \n", miles)
 }
 
-func (c *Circle) Area() int {
-	return c.radius * c.radius * 22 / 7
+// creator
+type VehicleFactory interface {
+	GetVehicle(vehicle string) IFactory
 }
 
-func (s *Square) Area() int {
-	return s.side * s.side
+// concreate creator
+type MotorcycleFactory struct{}
+
+func (c *MotorcycleFactory) GetVehicle(vehicle string) IFactory {
+	var vehicleType IFactory
+	if vehicle == "a" {
+		vehicleType = &Scooter{}
+	} else if vehicle == "b" {
+		vehicleType = &Bike{}
+	}
+
+	return vehicleType
 }
 
-func GetArea(s Shape) int {
-	return s.Area()
+type CarFactory struct{}
+
+func (c *CarFactory) GetVehicle(vehicle string) IFactory {
+	var vehicleType IFactory
+	if vehicle == "c" {
+		vehicleType = &BMW{}
+	}
+	return vehicleType
 }
 
 func main() {
-	s := &Square{5}
-	fmt.Println(GetArea(s))
+	mfactory := &MotorcycleFactory{}
 
-	c := &Circle{10}
-	fmt.Println(GetArea(c))
+	scooter := mfactory.GetVehicle("a")
+	scooter.Drive(10)
 
-	// will error, because type "Rectangle does not fulfill interface"
-	// r := &Rectangle{5}
-	// fmt.Println(GetArea(r))
+	bike := mfactory.GetVehicle("b")
+	bike.Drive(30)
+
+	cfactory := &CarFactory{}
+	bmw := cfactory.GetVehicle("c")
+	bmw.Drive(100000)
 }

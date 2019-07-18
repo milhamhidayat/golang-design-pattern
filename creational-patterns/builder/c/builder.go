@@ -45,7 +45,7 @@ func (m *MeatPizza) GetPizza() {
 }
 
 // director
-// mendefiniskan urutan dalam menyusun produk
+// mendefinisikan urutan dalam menyusun produk
 // menggunakan interface yang diimplementasikan oleh concrete builder
 type PizzaDirector struct {
 	builder PizzaBuilder
